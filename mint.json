@@ -1,0 +1,17 @@
+{
+  "name": "lootauvore-front",
+  "application": {
+    "head": "assets/head.html",
+    "title": "lootauvore-front"
+  },
+  "source-directories": [
+    "source"
+  ],
+  "test-directories": [
+    "tests"
+  ],
+  "external": {
+    "javascripts": [],
+    "stylesheets": ["assets/main.css"]
+  }
+}
