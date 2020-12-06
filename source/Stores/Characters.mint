@@ -9,7 +9,21 @@ record Stores.Characters.Character {
 }
 
 store Stores.Characters {
+  const CLASSES = [
+    "paladin", 
+    "warlock", 
+    "mage", 
+    "druid", 
+    "priest", 
+    "hunter", 
+    "rogue", 
+    "shaman", 
+    "warrior"
+  ]
+
   state status : Api.Status(Array(Stores.Characters.Character)) = Api.Status::Initial
+
+  state currentKlasses : Array(String) = []
 
   fun reset : Promise(Never, Void) {
     next { status = Api.Status::Initial }
@@ -17,6 +31,7 @@ store Stores.Characters {
 
   fun load : Promise(Never, Void) {
     sequence {
+      next { currentKlasses = CLASSES }
       next { status = Api.Status::Loading }
 
       request = Http.get("/characters")
@@ -30,7 +45,7 @@ store Stores.Characters {
 
   fun loadKlasses(klasses : Array(String)) : Promise(Never, Void) {
     sequence {
-      `console.log(#{klasses})`
+      next { currentKlasses = klasses }
       next { status = Api.Status::Loading }
 
       klassesStr = klasses 

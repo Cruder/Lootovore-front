@@ -1,18 +1,6 @@
 component Main {
   connect Application exposing { page }
 
-  style base {
-    font-family: sans;
-    font-weight: bold;
-    font-size: 50px;
-
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-  }
-
   fun render : Html {
     case (page) {
       Page::Initial => Html.empty()
@@ -24,12 +12,12 @@ component Main {
 
       Page::Characters =>
         <Layout>
-          <Pages.Characters/>
+          <Pages.Characters.Index/>
         </Layout>
 
       Page::Character =>
         <Layout>
-          <Pages.Character/>
+          <Pages.Characters.Show/>
         </Layout>
 
       Page::Loots =>

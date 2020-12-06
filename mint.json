@@ -13,5 +13,11 @@
   "external": {
     "javascripts": [],
     "stylesheets": ["assets/main.css"]
+  },
+  "dependencies": {
+    "mint-ui": {
+      "repository": "https://github.com/mint-lang/mint-ui",
+      "constraint": "0.0.14 <= v < 1.0.0"
+    }
   }
 }
