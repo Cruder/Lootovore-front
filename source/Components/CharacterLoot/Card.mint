@@ -1,7 +1,7 @@
 component CharacterLoot.Card {
   property character : Stores.Characters.Character
 
-  connect Theme exposing { secondaryBackground }
+  connect Theme exposing { primaryBackground, secondaryBackground, primary }
 
   style base {
     background: #{secondaryBackground};
@@ -13,6 +13,14 @@ component CharacterLoot.Card {
     justify-content: space-between;
 
     min-height: 280px;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px #{secondaryBackground};
+
+    &:hover {
+      animation: 10s ease-in 1s 2 reverse both paused slidein;
+      box-shadow: 0px 10px 5px #{primary};
+    }
   }
 
   get lastLoots {
@@ -20,7 +28,19 @@ component CharacterLoot.Card {
   }
 
   fun goToCharacter(character : Stores.Characters.Character, event : Html.Event) : Promise(Never, Void) {
-    Window.navigate("characters/#{character.id}") 
+    sequence {
+      Application.load(Page::Character)
+      Stores.Character.setCharacter(
+        { 
+          id = character.id,
+          name = character.name,
+          klass = character.klass,
+          icon = character.icon,
+          loots = character.loots,   
+        }
+      )
+      Window.setUrl("characters/#{character.id}")
+    }
   }
 
   fun render : Html {

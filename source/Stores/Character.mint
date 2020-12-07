@@ -28,6 +28,10 @@ store Stores.Character {
     next { status = Api.Status::Initial }
   }
 
+  fun setCharacter(character : Stores.Character) : Promise(Never, Void) {
+    next { status = Api.Status::Ok(character) }
+  }
+
   fun load(id : String) : Promise(Never, Void) {
     sequence {
       next { status = Api.Status::Loading }

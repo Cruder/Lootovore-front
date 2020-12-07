@@ -65,4 +65,19 @@ store Stores.Characters {
   fun decoder (object : Object) : Result(Object.Error, Array(Stores.Characters.Character)) { 
     decode object as Array(Stores.Characters.Character)
   }
+
+  fun setKlasses (klasses : Array(String)) : Promise(Never, Void) {
+    next { currentKlasses = klasses }
+  }
+
+  fun flipKlass (klass : String) : Promise(Never, Void) {
+    if (itContains) {
+      next { currentKlasses = (currentKlasses |> Set.fromArray() |> Set.delete(klass) |> Set.toArray()) }
+    } else {
+      next { currentKlasses = (currentKlasses |> Set.fromArray() |> Set.add(klass) |> Set.toArray()) }
+    }
+  } where {
+    itContains =
+      (currentKlasses |> Array.contains(klass))
+  }
 }

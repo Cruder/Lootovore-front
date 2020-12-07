@@ -1,7 +1,5 @@
 component CharacterLoot.Filters.Classes {
-  connect Stores.Characters exposing { CLASSES, currentKlasses }
-
-  state activeClasses : Set(String) = Set.fromArray(currentKlasses)
+  connect Stores.Characters exposing { CLASSES, currentKlasses, setKlasses, flipKlass }
 
   style classes {
     display: flex;
@@ -13,20 +11,18 @@ component CharacterLoot.Filters.Classes {
     CLASSES |> Array.map(classHtml)
   }
 
-  fun activeClass (klass : String) : Bool {
-    currentKlasses |> Array.contains(klass)
-  }
-
   fun classHtml (klass : String) : Html {
-    <CharacterLoot.Filters.Class klass={klass} onClick={onClassClick} isActive={activeClass(klass)} />
+    <CharacterLoot.Filters.Class klass={klass} onClick={onClassClick} />
   }
 
-  fun alterActive (klass : String, active : Bool) : Set(String) {
-    if (active == true) {
-      activeClasses |> Set.add(klass) 
-    } else {
-      activeClasses |> Set.delete(klass) 
-    }
+  fun alterActive (klass : String, event : Html.Event) : Promise(Never, Void) { 
+      if (event.shiftKey == true) {
+        setKlasses([klass])
+      } else if (event.ctrlKey == true) {
+        setKlasses(CLASSES |> Set.fromArray() |> Set.delete(klass) |> Set.toArray() )
+      } else {
+        flipKlass(klass)
+      }
   }
 
   fun reduceClass (acc : String, klass : String) : String {
@@ -34,23 +30,31 @@ component CharacterLoot.Filters.Classes {
   }
 
   get classesUrl {
-    activeClasses 
-    |> Set.toArray()
+    currentKlasses 
     |> Array.intersperse(",")
     |> Array.reduce("/characters?klasses=", reduceClass)
   }
 
-  fun onClassClick (klass : String, active : Bool, event : Html.Event) : Promise(Never, Void) {
-    sequence {
-      next { activeClasses = alterActive(klass, active) }
+  fun refreshClassesHtml () : Promise(Never, Void) {
+    case (classes) {
+      Maybe::Just element => next {  }
+      Maybe::Nothing => next { }
+    }
+  }
 
-      activeClasses |> Set.toArray() |> Stores.Characters.loadKlasses()
+  fun onClassClick (klass : String, event : Html.Event) : Promise(Never, Void) {
+    sequence {
+      alterActive(klass, event)
+
+      currentKlasses |> Stores.Characters.loadKlasses()
       classesUrl |> Window.setUrl
+
+      refreshClassesHtml()
     }
   }
 
   fun render : Html {
-    <div::classes>
+    <div::classes as classes>
       <{ classesHtml }>
     </div>
   }

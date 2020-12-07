@@ -1,11 +1,14 @@
 component CharacterLoot.Filters.Class {
-  property klass : String
-  property isActive : Bool
+  connect Stores.Characters exposing { currentKlasses }
 
-  property onClick : Function(String, Bool, Html.Event, Promise(Never, Void)) =
-    (klass : String, active : Bool, event : Html.Event) : Promise(Never, Void) { next { } } 
+  property klass : String
+
+  property onClick : Function(String, Html.Event, Promise(Never, Void)) =
+    (klass : String, event : Html.Event) : Promise(Never, Void) { next { } } 
   
-  state active : Bool = isActive
+  fun isActive () : Bool {
+    currentKlasses |> Array.contains(klass)
+  }
 
   style class(active : Bool) {
     flex-basis: 20%;
@@ -32,13 +35,12 @@ component CharacterLoot.Filters.Class {
 
   fun handleClick (event : Html.Event) : Promise(Never, Void) {
     sequence {
-      next { active = !active }
-      onClick(klass, active, event)
+      onClick(klass, event)
     }
   }
 
   fun render : Html {
-    <div::class(active)>
+    <div::class(isActive())>
       <img onClick={handleClick} src={ linkImg }></img>
     </div>
   }

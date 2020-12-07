@@ -75,7 +75,7 @@ module Api {
   ) : Promise(Never, Api.Status(a)) {
     sequence {
       response =
-        { request | url = "http://localhost:9292" + request.url }
+        { request | url = @ENDPOINT + request.url }
         |> Http.header("Content-Type", "application/json")
         |> Http.send()
 
