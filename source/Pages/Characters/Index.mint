@@ -3,7 +3,9 @@ component Pages.Characters.Index {
   connect Theme exposing { secondaryBackground }
 
   style base {
-    display: flex;
+    display: flex;    
+    flex-direction: column;
+
   }
 
   style cards {

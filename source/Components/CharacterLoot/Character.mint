@@ -19,6 +19,23 @@ component CharacterLoot.Character {
     margin-bottom: 16px;
   }
 
+  style character-name(klass : String) {
+    font-family: uniSansHeavy;
+
+    case (klass) {
+      "druid" => color: #FF7C0A;
+      "hunter" => color: #AAD372;
+      "mage" => color: #3FC7EB;
+      "paladin" => color: #F48CBA;
+      "priest" => color: #FFFFFF;
+      "rogue" => color: #FFF468;
+      "shaman" => color: #0070DD;
+      "warlock" => color: #8788EE;
+      "warrior" => color: #C69B6D;
+      => color: red;
+    }
+  }
+
   get primaryLoots {
     character.lootCount |> Map.values() |> Array.take(2) |> Array.sum()
   }
@@ -40,7 +57,7 @@ component CharacterLoot.Character {
       <div::description>
         <img::class src={character.icon} loading="lazy"/>
 
-        <{ character.name }>
+        <p::character-name(character.klass |> String.toLowerCase)><{ character.name }></p>
       </div>
       <div>
         <{ lootCount }>

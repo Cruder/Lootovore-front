@@ -21,6 +21,10 @@ component Pages.Characters.Show {
     }
   }
 
+  fun goBack(event : Html.Event) : Promise(Never, Void) {
+    Application.load(Page::Characters)
+  }
+
   fun render : Html {
     <Status
       message="There was an error loading the articles."

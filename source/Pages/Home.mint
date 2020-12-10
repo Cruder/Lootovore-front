@@ -31,20 +31,10 @@ component Pages.Home {
     font-weight: 800;
     text-transform: uppercase;
   }
-  
-  fun goToCharacters(event : Html.Event) : Promise(Never, Void) {
-    sequence {
-      Application.load(Page::Characters)
-      
-      Stores.Characters.load()
-
-      Window.setUrl("characters")
-    }
-  }
 
   fun render : Html {
     <div::base>
-      <div::card onClick={goToCharacters}>
+      <div::card onClick={Navigator.characters}>
         <div>
           <p::title>"Characters"</p>
         </div>
@@ -53,7 +43,7 @@ component Pages.Home {
         </div>
       </div>
 
-      <div::card onClick={goToCharacters}>
+      <div::card onClick={Navigator.characters}>
         <div>
           <p::title>"Loots"</p>
         </div>

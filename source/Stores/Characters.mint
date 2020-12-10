@@ -29,6 +29,13 @@ store Stores.Characters {
     next { status = Api.Status::Initial }
   }
 
+  fun isLoaded : Bool {
+    case (status) {
+      Api.Status::Ok characters => true
+      => false
+    }
+  }
+
   fun load : Promise(Never, Void) {
     sequence {
       next { currentKlasses = CLASSES }

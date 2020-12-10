@@ -4,7 +4,7 @@ component CharacterLoot.Filters.Classes {
   style classes {
     display: flex;
     flex-wrap: wrap;
-    padding: 16px 32px;
+    justify-content: space-evenly;
   }
 
   get classesHtml {
