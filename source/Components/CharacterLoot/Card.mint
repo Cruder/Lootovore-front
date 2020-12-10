@@ -22,6 +22,10 @@ component CharacterLoot.Card {
     }
   }
 
+  style loots {
+    margin: 0 0 16px;
+  }
+
   get lastLoots {
     character.loots |> Array.take(3)
   }
@@ -46,9 +50,11 @@ component CharacterLoot.Card {
     <div::base>
       <div>
         <CharacterLoot.Character character={character} />
-        for (loot of lastLoots) {
-          <CharacterLoot.Loot loot={loot} />
-        }
+        <div::loots>
+          for (loot of lastLoots) {
+            <CharacterLoot.Loot loot={loot} />
+          }
+        </div>
       </div>
       <Button onClick={goToCharacter(character)}> "History" </Button>
     </div>

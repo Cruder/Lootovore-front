@@ -13,6 +13,10 @@ component CharacterLoot.Loot {
   }
 
   style equipment-quality(quality : String) {
+    font-size: 16px;
+
+    word-spacing: 3px;
+
     case (quality) {
       "legendary" => color: #ff8000;
       "epic" => color: #a335ee;
