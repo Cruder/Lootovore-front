@@ -17,11 +17,11 @@ component CharacterLoot.Filters.Classes {
 
   fun alterActive (klass : String, event : Html.Event) : Promise(Never, Void) { 
       if (event.shiftKey == true) {
-        setKlasses([klass])
+        flipKlass(klass)
       } else if (event.ctrlKey == true) {
         setKlasses(CLASSES |> Set.fromArray() |> Set.delete(klass) |> Set.toArray() )
       } else {
-        flipKlass(klass)
+        setKlasses([klass])
       }
   }
 

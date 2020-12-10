@@ -5,10 +5,15 @@ html, body {
 
 @font-face {
   font-family: uniSansHeavy;
-  src: url("/uni-sans/Uni Sans Heavy.otf");
+  src: url("/Uni_Sans/Uni Sans Heavy.otf");
+}
+
+@font-face {
+  font-family: uniSansRegular;
+  src: url("/Uni_Sans/Uni Sans Regular.otf");
 }
 
 @font-face {
   font-family: uniSansThin;
-  src: url("/uni-sans/Uni Sans Thin.otf");
+  src: url("/Uni_Sans/Uni Sans Thin.otf");
 }

@@ -20,7 +20,8 @@ component CharacterLoot.Character {
   }
 
   style character-name(klass : String) {
-    font-family: uniSansHeavy;
+    font-family: uniSansRegular;
+    font-size: 22px;
 
     case (klass) {
       "druid" => color: #FF7C0A;

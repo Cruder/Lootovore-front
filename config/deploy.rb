@@ -18,7 +18,9 @@ set :keep_releases, 5
 namespace :deploy do
   task :build do
     on roles(:all) do
-      execute "/home/deployer/.asdf/installs/mint/0.10.0/bin/mint build -e .env.production"
+      within release_path do
+        execute "/home/deployer/.asdf/installs/mint/0.10.0/bin/mint build -e .env.production"
+      end
     end
   end
 end
