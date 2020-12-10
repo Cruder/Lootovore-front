@@ -16,7 +16,11 @@ set :ssh_options, {
 set :keep_releases, 5
 
 namespace :deploy do
-  task :build, :roles => :web do
-    run "mint build -e .env.production"
+  task :build do
+    on roles(:all) do
+      execute "mint build -e .env.production"
+    end
   end
 end
+
+after 'deploy', 'deploy:build'
