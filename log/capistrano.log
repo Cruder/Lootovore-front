@@ -78,3 +78,82 @@
   INFO [3d39ce42] Running /usr/bin/env echo "Branch master (at 73abf065808e31433b28614dab9696fab9286f24) deployed as release 20201205224136 by alex" >> /data/lootauvore-front/revisions.log as deployer@212.47.242.73
  DEBUG [3d39ce42] Command: cd /data/lootauvore-front/releases && /usr/bin/env echo "Branch master (at 73abf065808e31433b28614dab9696fab9286f24) deployed as release 20201205224136 by alex" >> /data/lootauvore-front/revisions.log
   INFO [3d39ce42] Finished in 0.078 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-07 14:23:41 +0100 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [b0f96c05] Running /usr/bin/env mkdir -p /tmp as deployer@212.47.242.73
+ DEBUG [b0f96c05] Command: /usr/bin/env mkdir -p /tmp
+  INFO [b0f96c05] Finished in 1.541 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-lootauvore-front-production-alex.sh 0.0%
+  INFO Uploading /tmp/git-ssh-lootauvore-front-production-alex.sh 100.0%
+  INFO [7a766123] Running /usr/bin/env chmod 700 /tmp/git-ssh-lootauvore-front-production-alex.sh as deployer@212.47.242.73
+ DEBUG [7a766123] Command: /usr/bin/env chmod 700 /tmp/git-ssh-lootauvore-front-production-alex.sh
+  INFO [7a766123] Finished in 0.078 seconds with exit status 0 (successful).
+  INFO [0ff7c1b1] Running /usr/bin/env git ls-remote git@github.com:Cruder/Lootovore-front.git HEAD as deployer@212.47.242.73
+ DEBUG [0ff7c1b1] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env git ls-remote git@github.com:Cruder/Lootovore-front.git HEAD )
+ DEBUG [0ff7c1b1] 	5301f035ada47c5923c39240017b7a3fded6cfba	HEAD
+  INFO [0ff7c1b1] Finished in 1.233 seconds with exit status 0 (successful).
+  INFO [e7be70ae] Running /usr/bin/env mkdir -p /data/lootauvore-front/shared /data/lootauvore-front/releases as deployer@212.47.242.73
+ DEBUG [e7be70ae] Command: /usr/bin/env mkdir -p /data/lootauvore-front/shared /data/lootauvore-front/releases
+  INFO [e7be70ae] Finished in 0.033 seconds with exit status 0 (successful).
+ DEBUG [15d47e21] Running [ -f /data/lootauvore-front/current/REVISION ] as deployer@212.47.242.73
+ DEBUG [15d47e21] Command: [ -f /data/lootauvore-front/current/REVISION ]
+ DEBUG [15d47e21] Finished in 0.080 seconds with exit status 0 (successful).
+ DEBUG [ddb52e2d] Running /usr/bin/env cat /data/lootauvore-front/current/REVISION 2>/dev/null as deployer@212.47.242.73
+ DEBUG [ddb52e2d] Command: /usr/bin/env cat /data/lootauvore-front/current/REVISION 2>/dev/null
+ DEBUG [ddb52e2d] 	73abf065808e31433b28614dab9696fab9286f24
+ DEBUG [ddb52e2d] Finished in 0.078 seconds with exit status 0 (successful).
+ DEBUG [2ece9cb7] Running [ -f /data/lootauvore-front/repo/HEAD ] as deployer@212.47.242.73
+ DEBUG [2ece9cb7] Command: [ -f /data/lootauvore-front/repo/HEAD ]
+ DEBUG [2ece9cb7] Finished in 0.074 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /data/lootauvore-front/repo
+ DEBUG [1975b67b] Running if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi as deployer@212.47.242.73
+ DEBUG [1975b67b] Command: if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi
+ DEBUG [1975b67b] Finished in 0.083 seconds with exit status 0 (successful).
+  INFO [8eb6ef70] Running /usr/bin/env git remote set-url origin git@github.com:Cruder/Lootovore-front.git as deployer@212.47.242.73
+ DEBUG [8eb6ef70] Command: cd /data/lootauvore-front/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env git remote set-url origin git@github.com:Cruder/Lootovore-front.git )
+  INFO [8eb6ef70] Finished in 0.079 seconds with exit status 0 (successful).
+  INFO [09dbaf9d] Running /usr/bin/env git remote update --prune as deployer@212.47.242.73
+ DEBUG [09dbaf9d] Command: cd /data/lootauvore-front/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [09dbaf9d] 	Fetching origin
+ DEBUG [09dbaf9d] 	From github.com:Cruder/Lootovore-front
+   73abf06..5301f03  master     -> master
+  INFO [09dbaf9d] Finished in 1.443 seconds with exit status 0 (successful).
+ DEBUG [e96dc131] Running if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi as deployer@212.47.242.73
+ DEBUG [e96dc131] Command: if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi
+ DEBUG [e96dc131] Finished in 0.075 seconds with exit status 0 (successful).
+  INFO [52d39113] Running /usr/bin/env mkdir -p /data/lootauvore-front/releases/20201207132345 as deployer@212.47.242.73
+ DEBUG [52d39113] Command: cd /data/lootauvore-front/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env mkdir -p /data/lootauvore-front/releases/20201207132345 )
+  INFO [52d39113] Finished in 0.079 seconds with exit status 0 (successful).
+  INFO [5d20a0ee] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /data/lootauvore-front/releases/20201207132345 as deployer@212.47.242.73
+ DEBUG [5d20a0ee] Command: cd /data/lootauvore-front/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /data/lootauvore-front/releases/20201207132345 )
+  INFO [5d20a0ee] Finished in 0.087 seconds with exit status 0 (successful).
+ DEBUG [7678ca32] Running if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi as deployer@212.47.242.73
+ DEBUG [7678ca32] Command: if test ! -d /data/lootauvore-front/repo; then echo "Directory does not exist '/data/lootauvore-front/repo'" 1>&2; false; fi
+ DEBUG [7678ca32] Finished in 0.079 seconds with exit status 0 (successful).
+ DEBUG [2a4f6528] Running /usr/bin/env git rev-list --max-count=1 master as deployer@212.47.242.73
+ DEBUG [2a4f6528] Command: cd /data/lootauvore-front/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-lootauvore-front-production-alex.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [2a4f6528] 	5301f035ada47c5923c39240017b7a3fded6cfba
+ DEBUG [2a4f6528] Finished in 0.112 seconds with exit status 0 (successful).
+ DEBUG [160bbeb4] Running if test ! -d /data/lootauvore-front/releases/20201207132345; then echo "Directory does not exist '/data/lootauvore-front/releases/20201207132345'" 1>&2; false; fi as deployer@212.47.242.73
+ DEBUG [160bbeb4] Command: if test ! -d /data/lootauvore-front/releases/20201207132345; then echo "Directory does not exist '/data/lootauvore-front/releases/20201207132345'" 1>&2; false; fi
+ DEBUG [160bbeb4] Finished in 0.071 seconds with exit status 0 (successful).
+  INFO [db889d04] Running /usr/bin/env echo "5301f035ada47c5923c39240017b7a3fded6cfba" > REVISION as deployer@212.47.242.73
+ DEBUG [db889d04] Command: cd /data/lootauvore-front/releases/20201207132345 && /usr/bin/env echo "5301f035ada47c5923c39240017b7a3fded6cfba" > REVISION
+  INFO [db889d04] Finished in 0.086 seconds with exit status 0 (successful).
+  INFO [1f90f2a8] Running /usr/bin/env ln -s /data/lootauvore-front/releases/20201207132345 /data/lootauvore-front/releases/current as deployer@212.47.242.73
+ DEBUG [1f90f2a8] Command: /usr/bin/env ln -s /data/lootauvore-front/releases/20201207132345 /data/lootauvore-front/releases/current
+  INFO [1f90f2a8] Finished in 0.080 seconds with exit status 0 (successful).
+  INFO [5b057e7e] Running /usr/bin/env mv /data/lootauvore-front/releases/current /data/lootauvore-front as deployer@212.47.242.73
+ DEBUG [5b057e7e] Command: /usr/bin/env mv /data/lootauvore-front/releases/current /data/lootauvore-front
+  INFO [5b057e7e] Finished in 0.084 seconds with exit status 0 (successful).
+ DEBUG [976a2a1c] Running /usr/bin/env ls -x /data/lootauvore-front/releases as deployer@212.47.242.73
+ DEBUG [976a2a1c] Command: /usr/bin/env ls -x /data/lootauvore-front/releases
+ DEBUG [976a2a1c] 	20201205224136	20201207132345
+ DEBUG [976a2a1c] Finished in 0.085 seconds with exit status 0 (successful).
+ DEBUG [10b6a551] Running if test ! -d /data/lootauvore-front/releases; then echo "Directory does not exist '/data/lootauvore-front/releases'" 1>&2; false; fi as deployer@212.47.242.73
+ DEBUG [10b6a551] Command: if test ! -d /data/lootauvore-front/releases; then echo "Directory does not exist '/data/lootauvore-front/releases'" 1>&2; false; fi
+ DEBUG [10b6a551] Finished in 0.076 seconds with exit status 0 (successful).
+  INFO [f7e8a4d1] Running /usr/bin/env echo "Branch master (at 5301f035ada47c5923c39240017b7a3fded6cfba) deployed as release 20201207132345 by alex" >> /data/lootauvore-front/revisions.log as deployer@212.47.242.73
+ DEBUG [f7e8a4d1] Command: cd /data/lootauvore-front/releases && /usr/bin/env echo "Branch master (at 5301f035ada47c5923c39240017b7a3fded6cfba) deployed as release 20201207132345 by alex" >> /data/lootauvore-front/revisions.log
+  INFO [f7e8a4d1] Finished in 0.078 seconds with exit status 0 (successful).

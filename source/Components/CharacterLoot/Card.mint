@@ -18,8 +18,7 @@ component CharacterLoot.Card {
     box-shadow: 0px 0px 0px #{secondaryBackground};
 
     &:hover {
-      animation: 10s ease-in 1s 2 reverse both paused slidein;
-      box-shadow: 0px 10px 5px #{primary};
+      box-shadow: 0px 15px 25px #{secondaryBackground};
     }
   }
 
