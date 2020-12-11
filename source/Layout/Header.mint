@@ -17,6 +17,8 @@ component Layout.Header {
 
   style wrapper {
     margin: 0 0 0 16px;
+    display: flex;
+    align-items: center;
   }
 
   style brand {
@@ -95,6 +97,10 @@ style links {
     }
   }
 
+  style logo-img {
+    height: 60px;
+  }
+
   get links {
     <>
       <p::link onClick={Navigator.characters}>"Characters"</p>
@@ -106,6 +112,7 @@ style links {
   fun render : Html {
     <div::base>
       <div::wrapper>
+        <img::logo-img src="/titan_logo.png" />
         <p::brand onClick={Navigator.home}>"Titan Loot"</p>
       </div>
 

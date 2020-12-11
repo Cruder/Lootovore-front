@@ -2,7 +2,9 @@
   "name": "lootauvore-front",
   "application": {
     "head": "assets/head.html",
-    "title": "lootauvore-front"
+    "icon": "assets/titan_logo.png",
+    "title": "Titan - Loot Manager",
+    "name": "Titan - Loot Manager"
   },
   "source-directories": [
     "source"

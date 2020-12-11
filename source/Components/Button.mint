@@ -34,12 +34,12 @@ component Button {
   }
 
   fun render : Html {
-    <button::base
+    <div::base
       onClick={onClick}
       disabled={disabled}>
 
       <{ children }>
 
-    </button>
+    </div>
   }
 }
