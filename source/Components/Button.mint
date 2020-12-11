@@ -19,7 +19,6 @@ component Button {
     outline: none;
     height: 40px;
     color: white;
-    width: 100%;
     border: 0;
     transition: 0.5s;
 
