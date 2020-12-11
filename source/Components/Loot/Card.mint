@@ -39,7 +39,8 @@ component Loots.Character {
   style base {
     display: flex;
     flex-direction: row;
-
+    align-items: center;
+    justify-content: right;
   }
 
   style character-name(klass : String) {
