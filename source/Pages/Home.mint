@@ -24,6 +24,8 @@ component Pages.Home {
       box-shadow: 0px 15px 25px #{secondaryBackground};
       color: #{primary};
     }
+
+    cursor: pointer;
   }
 
   style title {
@@ -43,7 +45,7 @@ component Pages.Home {
         </div>
       </div>
 
-      <div::card onClick={Navigator.characters}>
+      <div::card onClick={Navigator.loots}>
         <div>
           <p::title>"Loots"</p>
         </div>

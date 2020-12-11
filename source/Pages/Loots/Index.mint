@@ -1,5 +1,5 @@
-component Pages.Characters.Index {
-  connect Stores.Characters exposing { status }
+component Pages.Loots.Index {
+  connect Stores.Loots exposing { status }
   connect Theme exposing { secondaryBackground }
 
   style base {
@@ -22,23 +22,25 @@ component Pages.Characters.Index {
     margin: 32px;
   }
 
-  get data : Array(Stores.Characters.Character) {
+  get data : Array(Stores.Loots.Loot) {
     Api.withDefault([], status)
   }
 
   fun render : Html {
     <div::base>
+      /*
       <div::filters>
         <CharacterLoot.Filters />
       </div>
+      */
+
       <div::cards>
         <Status
-          message="There was an error loading the characters."
+          message="There was an error loading the loots."
           loadingMessage="Loading characters..."
           status={Api.toStatus(status)}>
-
-            for (character of data) {
-              <CharacterLoot.Card character={character} />
+            for (loot of data) {
+              <Loots.Card loot={loot} />
             }
         </Status>
       </div>

@@ -1,7 +1,7 @@
 component CharacterLoot.Card {
-  property character : Stores.Characters.Character
-
   connect Theme exposing { primaryBackground, secondaryBackground, primary }
+
+  property character : Stores.Characters.Character
 
   style base {
     background: #{secondaryBackground};

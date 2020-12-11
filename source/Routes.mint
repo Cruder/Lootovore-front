@@ -29,6 +29,7 @@ routes {
   /loots {
     parallel {
       Application.load(Page::Loots)
+      Stores.Loots.load()
     }
   }
 

@@ -26,6 +26,13 @@ module Api {
     }
   }
 
+  fun errors (status : Api.Status(a)) : Map(String, Array(String)) {
+    case (status) {
+      Api.Status::Error error => error
+      => Map.empty()
+    }
+  }
+
   fun isLoading (status : Api.Status(a)) : Bool {
     case (status) {
       Api.Status::Loading => true

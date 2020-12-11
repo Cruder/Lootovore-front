@@ -20,4 +20,31 @@ store Navigator {
       Window.setUrl("/characters")
     }
   }
+
+  fun character(id : Number, event : Html.Event) : Promise(Never, Void) {
+    sequence {
+      Application.load(Page::Character)
+
+      Stores.Character.load(strId)
+     
+      Window.setUrl("/characters/#{strId}")
+    }
+  } where {
+    strId =
+      id |> Number.toString()
+  }
+
+  fun loots(event : Html.Event) : Promise(Never, Void) {
+    sequence {
+      Application.load(Page::Loots)
+
+      if (!Stores.Loots.isLoaded()) {
+        Stores.Loots.load()
+      } else {
+        next {}
+      }
+
+      Window.setUrl("/loots")
+    }
+  }
 }

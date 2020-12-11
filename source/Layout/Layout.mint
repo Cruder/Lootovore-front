@@ -3,20 +3,31 @@ component Layout {
 
   property children : Array(Html) = []
 
-  style base {
+  property header = true
+
+  style base(withHeader : Bool) {
     background: #{primaryBackground};
     color: #{primaryText};
-    min-height: 100vh;
+
+    if (withHeader) {
+      min-height: calc(100vh - 78px);
+      margin-top: 78px;
+    } else {
+      min-height: 100vh;
+    }
   }
 
   fun render : Html {
-    <div::base>
+    <>
+      if (header) {
+        <Layout.Header/>
+      }
 
-      <Layout.Header/>
+      <div::base(header)>
+        <{ children }>
 
-      <{ children }>
-
-      <Layout.Footer/>
-    </div>
+        <Layout.Footer/>
+      </div>
+    </>
   }
 }

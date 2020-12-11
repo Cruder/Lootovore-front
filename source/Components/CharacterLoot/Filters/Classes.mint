@@ -3,8 +3,6 @@ component CharacterLoot.Filters.Classes {
 
   style classes {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
   }
 
   get classesHtml {

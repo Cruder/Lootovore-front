@@ -6,18 +6,17 @@ component Layout.Header {
     color: white;
 
     display: flex;
+
+    position: fixed;
+
+    width: 100vw;
+    height: 78px;
+
+    top: 0;
   }
 
   style wrapper {
-    padding: 0 0 0 15px;
-    align-items: center;
-    height: 56px;
-
-    @media (max-width: 960px) {
-      padding: 5px 0;
-      display: block;
-      height: auto;
-    }
+    margin: 0 0 0 16px;
   }
 
   style brand {
@@ -100,7 +99,7 @@ style links {
     <>
       <p::link onClick={Navigator.characters}>"Characters"</p>
       <p::separator />
-      <p::link onClick={Navigator.characters}>"Loots"</p>
+      <p::link onClick={Navigator.loots}>"Loots"</p>
     </>
   }
 
