@@ -33,6 +33,13 @@ routes {
     }
   }
 
+  /equipments/:id (id : String) {
+    parallel {
+      Application.load(Page::Equipment)
+      Stores.Equipment.load(id)
+    }
+  }
+
   * {
     Application.load(Page::NotFound)
   }

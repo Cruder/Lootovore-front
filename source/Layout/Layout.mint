@@ -4,6 +4,7 @@ component Layout {
   property children : Array(Html) = []
 
   property header = true
+  property footer = true
 
   style base(withHeader : Bool) {
     background: #{primaryBackground};
@@ -24,9 +25,14 @@ component Layout {
       }
 
       <div::base(header)>
-        <{ children }>
+        <div>
+          <{ children }>
+        </div>
 
+      if (footer) {
         <Layout.Footer/>
+      }
+
       </div>
     </>
   }

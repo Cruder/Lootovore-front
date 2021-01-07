@@ -1,5 +1,5 @@
 component CharacterLoot.Character {
-  property character : Stores.Characters.Character
+  property character : Aggregates.Character.Flatloots
 
   style class {
     padding-right: 16px;
@@ -37,16 +37,20 @@ component CharacterLoot.Character {
     }
   }
 
+  style loot-count {
+    color: white;
+  }
+
   get primaryLoots {
-    character.lootCount |> Map.values() |> Array.take(2) |> Array.sum()
+    character.lootCount |> Array.take(2) |> Array.sum()
   }
 
   get ofSpecLoots {
-    character.lootCount |> Map.values() |> Array.at(2) |> Maybe.withDefault(0)
+    character.lootCount |> Array.at(2) |> Maybe.withDefault(0)
   }
 
   get disenchantLoots {
-    character.lootCount |> Map.values() |> Array.at(3) |> Maybe.withDefault(0)
+    character.lootCount |> Array.at(3) |> Maybe.withDefault(0)
   }
 
   get lootCount : String {
@@ -61,7 +65,7 @@ component CharacterLoot.Character {
         <p::character-name(character.klass |> String.toLowerCase)><{ character.name }></p>
       </div>
       <div>
-        <{ lootCount }>
+        <p::loot-count><{ lootCount }></p>
       </div>
     </div>
   }

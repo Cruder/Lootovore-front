@@ -3,6 +3,7 @@ enum Page {
   Character
   Characters
   Loots
+  Equipment
   Home
   NotFound
 }

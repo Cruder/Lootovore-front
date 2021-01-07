@@ -1,4 +1,4 @@
-component Loader {
+component Atoms.Loader {
   property color : String = "#999"
 
   style base {

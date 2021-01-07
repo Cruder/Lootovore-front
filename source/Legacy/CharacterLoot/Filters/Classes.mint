@@ -3,6 +3,11 @@ component CharacterLoot.Filters.Classes {
 
   style classes {
     display: flex;
+
+    @media (max-width: 960px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   get classesHtml {

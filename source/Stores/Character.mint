@@ -1,34 +1,11 @@
-record Stores.Character {
-  id : Number,
-  name : String,
-  klass : String,
-  icon : String,
-  loots : Array(Stores.Loot)
-}
-
-record Stores.Loot {
-  wish : String,
-  date : String,
-  nbVote : Number using "nb_vote",
-  equipment : Stores.Equipment
-}
-
-record Stores.Equipment {
-  name : String,
-  icon : String,
-  wowheadUrl : String using "wowhead_url",
-  itemId : Number using "item_id",
-  quality : String
-}
-
 store Stores.Character {
-  state status : Api.Status(Stores.Character) = Api.Status::Initial
+  state status : Api.Status(Aggregates.Character) = Api.Status::Initial
 
   fun reset : Promise(Never, Void) {
     next { status = Api.Status::Initial }
   }
 
-  fun setCharacter(character : Stores.Character) : Promise(Never, Void) {
+  fun setCharacter(character : Aggregates.Character) : Promise(Never, Void) {
     next { status = Api.Status::Ok(character) }
   }
 
@@ -45,7 +22,7 @@ store Stores.Character {
     }
   }
 
-  fun decoder (object : Object) : Result(Object.Error, Stores.Character) { 
-    decode object as Stores.Character
+  fun decoder (object : Object) : Result(Object.Error, Aggregates.Character) { 
+    decode object as Aggregates.Character
   }
 }

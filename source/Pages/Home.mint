@@ -5,7 +5,11 @@ component Pages.Home {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    min-height: 100vh;    
+    min-height: 100vh;  
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
   }
 
   style card {
@@ -26,6 +30,16 @@ component Pages.Home {
     }
 
     cursor: pointer;
+
+    @media (max-width: 960px) {
+      width: 350px;
+      height: 350px;  
+    }
+
+    @media (max-width: 500px) {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   style title {

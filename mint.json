@@ -4,7 +4,8 @@
     "head": "assets/head.html",
     "icon": "assets/titan_logo.png",
     "title": "Titan - Loot Manager",
-    "name": "Titan - Loot Manager"
+    "name": "Titan - Loot Manager",
+    "css-prefix": "titan_"
   },
   "source-directories": [
     "source"

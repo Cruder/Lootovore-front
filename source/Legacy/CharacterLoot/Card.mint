@@ -1,7 +1,7 @@
 component CharacterLoot.Card {
-  connect Theme exposing { primaryBackground, secondaryBackground, primary }
+  connect Theme exposing { secondaryBackground }
 
-  property character : Stores.Characters.Character
+  property character : Aggregates.Character.Flatloots
 
   style base {
     background: #{secondaryBackground};
@@ -23,40 +23,41 @@ component CharacterLoot.Card {
   }
 
   style loots {
-    margin: 0 0 16px;
+    margin: 16px;
   }
 
   get lastLoots {
     character.loots |> Array.take(3)
   }
 
-  fun goToCharacter(character : Stores.Characters.Character, event : Html.Event) : Promise(Never, Void) {
+  fun goToCharacter(character : Aggregates.Character.Flatloots, event : Html.Event) : Promise(Never, Void) {
     sequence {
       Application.load(Page::Character)
-      Stores.Character.setCharacter(
-        { 
-          id = character.id,
-          name = character.name,
-          klass = character.klass,
-          icon = character.icon,
-          loots = character.loots,   
-        }
-      )
+      Stores.Character.load(character.id |> Number.toString())
       Window.setUrl("characters/#{character.id}")
+    }
+  }
+
+  fun aggregateToLeaf(character : Aggregates.Character.Flatloots) : Leaf.Character {
+    {
+      id = character.id,
+      name = character.name,
+      klass = character.klass,
+      icon = character.icon,
     }
   }
 
   fun render : Html {
     <div::base>
       <div>
-        <CharacterLoot.Character character={character} />
+        <Molecules.Character character={aggregateToLeaf(character)} />
         <div::loots>
           for (loot of lastLoots) {
-            <CharacterLoot.Loot loot={loot} />
+            <Molecules.Equipment equipment={loot.equipment} />
           }
         </div>
       </div>
-      <Button onClick={goToCharacter(character)}> "History" </Button>
+      <Atoms.Button onClick={goToCharacter(character)}> "History" </Atoms.Button>
     </div>
   }
 }

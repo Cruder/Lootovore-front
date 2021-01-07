@@ -22,7 +22,7 @@ component Pages.Characters.Index {
     margin: 32px;
   }
 
-  get data : Array(Stores.Characters.Character) {
+  get data : Array(Aggregates.Character.Flatloots) {
     Api.withDefault([], status)
   }
 
@@ -32,15 +32,15 @@ component Pages.Characters.Index {
         <CharacterLoot.Filters />
       </div>
       <div::cards>
-        <Status
-          message="There was an error loading the characters."
+        <Molecules.Status
+          message="There was an error loading characters."
           loadingMessage="Loading characters..."
           status={Api.toStatus(status)}>
 
             for (character of data) {
               <CharacterLoot.Card character={character} />
             }
-        </Status>
+        </Molecules.Status>
       </div>
 
     </div>

@@ -40,6 +40,10 @@ component Layout.Header {
       height: auto;
     }
 
+    @media (max-width: 500px) {
+      display: none;
+    }
+
     cursor: pointer;
   }
 
@@ -54,14 +58,6 @@ style links {
     grid-template-columns: repeat(5, min-content);
     grid-gap: 20px;
     display: grid;
-
-    @media (max-width: 960px) {
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      grid-template-columns: 1fr 1fr;
-      padding: 10px 0;
-      grid-gap: 10px;
-      display: grid;
-    }
   }
 
   style link {
@@ -81,10 +77,6 @@ style links {
       outline: none;
     }
 
-    @media (max-width: 960px) {
-      justify-content: center;
-    }
-
     cursor: pointer;
   }
 
@@ -92,9 +84,6 @@ style links {
     border-left: 1px solid rgba(255, 255, 255, 0.6);
     height: 20px;
 
-    @media (max-width: 960px) {
-      display: none;
-    }
   }
 
   style logo-img {
@@ -111,9 +100,9 @@ style links {
 
   fun render : Html {
     <div::base>
-      <div::wrapper>
+      <div::wrapper onClick={Navigator.home}>
         <img::logo-img src="/titan_logo.png" />
-        <p::brand onClick={Navigator.home}>"Titan Loot"</p>
+        <p::brand>"Titan Loot"</p>
       </div>
 
       <div::links>

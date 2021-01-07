@@ -1,4 +1,4 @@
-component SVG.HeartIcon {
+component Atoms.SVG.HeartIcon {
   property size : String = "18px"
 
   style base {

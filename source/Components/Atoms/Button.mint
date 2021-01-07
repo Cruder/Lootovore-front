@@ -1,5 +1,5 @@
-component Button {
-  connect Theme exposing { primary, primaryDark }
+component Atoms.Button {
+  connect Theme exposing { primary, primaryDark, primaryText }
 
   property onClick : Function(Html.Event, Promise(Never, Void)) =
     (event : Html.Event) : Promise(Never, Void) { next {  } }
@@ -18,7 +18,7 @@ component Button {
     padding: 0 20px;
     outline: none;
     height: 40px;
-    color: white;
+    color: #{primaryText};
     border: 0;
     transition: 0.5s;
 

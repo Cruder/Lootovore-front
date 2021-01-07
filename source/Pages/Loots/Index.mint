@@ -22,27 +22,21 @@ component Pages.Loots.Index {
     margin: 32px;
   }
 
-  get data : Array(Stores.Loots.Loot) {
+  get data : Array(Aggregates.Loot) {
     Api.withDefault([], status)
   }
 
   fun render : Html {
     <div::base>
-      /*
-      <div::filters>
-        <CharacterLoot.Filters />
-      </div>
-      */
-
       <div::cards>
-        <Status
+        <Molecules.Status
           message="There was an error loading the loots."
-          loadingMessage="Loading characters..."
+          loadingMessage="Loading loots..."
           status={Api.toStatus(status)}>
             for (loot of data) {
               <Loots.Card loot={loot} />
             }
-        </Status>
+        </Molecules.Status>
       </div>
 
     </div>

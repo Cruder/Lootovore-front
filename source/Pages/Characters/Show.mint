@@ -1,38 +1,56 @@
 component Pages.Characters.Show {
   connect Stores.Character exposing { status }
-
-  style show-page {
+  
+  style base {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    flex-direction: row;
 
-  fun characterHtml(character : Stores.Character) : Html {
-    <div::show-page>
-      <Loot.Character character={character} />
-      <Loot.Table loots={character.loots} />
-    </div>
-  }
-
-  get characterBuilder : Html {
-    case (status) {
-      Api.Status::Ok character => character |> characterHtml
-      => <{}>
+    @media (max-width: 720px) {
+      flex-direction: column;
     }
   }
 
-  fun goBack(event : Html.Event) : Promise(Never, Void) {
-    Application.load(Page::Characters)
+  get data : Maybe(Aggregates.Character) {
+    case (status) {
+      Api.Status::Ok character => Maybe.just(character)
+      => Maybe.nothing()
+    }
+  }
+
+  get renderData : Html {
+    data
+    |> Maybe.map(renderCharacter)
+    |> Maybe.withDefault(<{}>)
+  }
+
+  fun renderCharacter(character : Aggregates.Character) : Html {
+    <>
+      <Molecules.FloatingCard>
+        <Molecules.Character character={aggregateToLeaf(character)} />  
+      </Molecules.FloatingCard>
+      <div::base>
+        <Organisms.Loots.WishedLoots loots={character.loots} />
+      </div>
+    </>
+  }
+
+  fun aggregateToLeaf(character : Aggregates.Character) : Leaf.Character {
+    {
+      id = character.id,
+      name = character.name,
+      klass = character.klass,
+      icon = character.icon,
+    }
   }
 
   fun render : Html {
-    <Status
-      message="There was an error loading the articles."
+    <Molecules.Status
+      message="There was an error loading the character."
       loadingMessage="Loading characters..."
       status={Api.toStatus(status)}>
+      
+      <{ renderData }>
 
-
-      <{ characterBuilder }>
-    </Status>
+    </Molecules.Status>
   }
 }

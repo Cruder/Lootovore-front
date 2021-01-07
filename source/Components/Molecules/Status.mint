@@ -1,11 +1,4 @@
-enum Status {
-  Error
-  Ok
-  Loading
-  Initial
-}
-
-component Status {
+component Molecules.Status {
   property status : Status = Status::Initial
   property loadingMessage : String = ""
   property children : Array(Html) = []
@@ -48,7 +41,7 @@ component Status {
             <{ loadingMessage }>
           </div>
 
-          <Loader/>
+          <Atoms.Loader/>
         </div>
 
       Status::Initial => <div/>

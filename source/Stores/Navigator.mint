@@ -47,4 +47,17 @@ store Navigator {
       Window.setUrl("/loots")
     }
   }
+
+  fun equipment(id : Number, event : Html.Event) : Promise(Never, Void) {
+    sequence {
+      Application.load(Page::Equipment)
+
+      Stores.Equipment.load(strId)
+     
+      Window.setUrl("/equipments/#{strId}")
+    }
+  } where {
+    strId =
+      id |> Number.toString()
+  }
 }

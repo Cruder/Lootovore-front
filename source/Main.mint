@@ -6,7 +6,7 @@ component Main {
       Page::Initial => Html.empty()
 
       Page::Home =>
-        <Layout header={false}>
+        <Layout header={false} footer={false}>
           <Pages.Home/>
         </Layout>
 
@@ -23,6 +23,11 @@ component Main {
       Page::Loots =>
         <Layout>
           <Pages.Loots.Index/>
+        </Layout>
+
+      Page::Equipment =>
+        <Layout>
+          <Pages.Equipments.Show/>
         </Layout>
 
       Page::NotFound =>

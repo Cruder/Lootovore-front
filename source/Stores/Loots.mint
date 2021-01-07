@@ -1,18 +1,3 @@
-record Stores.Loots.Loot {
-  wish : String,
-  date : String,
-  nbVote : Number using "nb_vote",
-  equipment : Stores.Equipment,
-  character : Stores.Loots.Character
-}
-
-record Stores.Loots.Character {
-  id : Number,
-  name : String,
-  klass : String,
-  icon : String
-}
-
 store Stores.Loots {
   const CLASSES = [
     "paladin", 
@@ -26,7 +11,7 @@ store Stores.Loots {
     "warrior"
   ]
 
-  state status : Api.Status(Array(Stores.Loots.Loot)) = Api.Status::Initial
+  state status : Api.Status(Array(Aggregates.Loot)) = Api.Status::Initial
 
   state currentKlasses : Array(String) = []
 
@@ -74,8 +59,8 @@ store Stores.Loots {
     }
   }
 
-  fun decoder (object : Object) : Result(Object.Error, Array(Stores.Loots.Loot)) { 
-    decode Debug.log(object) as Array(Stores.Loots.Loot)
+  fun decoder (object : Object) : Result(Object.Error, Array(Aggregates.Loot)) { 
+    decode Debug.log(object) as Array(Aggregates.Loot)
   }
 
   fun setKlasses (klasses : Array(String)) : Promise(Never, Void) {

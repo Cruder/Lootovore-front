@@ -1,5 +1,5 @@
 component CharacterLoot.Loot {
-  property loot : Stores.Loot
+  property loot : Leaf.LootWithEquipment
 
   style base {
     display: flex;

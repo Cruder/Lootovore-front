@@ -17,3 +17,7 @@ html, body {
   font-family: uniSansThin;
   src: url("/Uni_Sans/Uni Sans Thin.otf");
 }
+
+.q {
+  color: var(--e-b) !important;
+}

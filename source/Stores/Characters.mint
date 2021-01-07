@@ -1,13 +1,3 @@
-record Stores.Characters.Character {
-  id : Number,
-  name : String,
-  klass : String,
-  icon : String,
-  lootCount : Map(String, Number) using "loot_count",
-  lastLoot : Maybe(Stores.Loot) using "last_loot",
-  loots: Array(Stores.Loot)
-}
-
 store Stores.Characters {
   const CLASSES = [
     "paladin", 
@@ -21,7 +11,7 @@ store Stores.Characters {
     "warrior"
   ]
 
-  state status : Api.Status(Array(Stores.Characters.Character)) = Api.Status::Initial
+  state status : Api.Status(Array(Aggregates.Character.Flatloots)) = Api.Status::Initial
 
   state currentKlasses : Array(String) = []
 
@@ -69,8 +59,8 @@ store Stores.Characters {
     }
   }
 
-  fun decoder (object : Object) : Result(Object.Error, Array(Stores.Characters.Character)) { 
-    decode object as Array(Stores.Characters.Character)
+  fun decoder (object : Object) : Result(Object.Error, Array(Aggregates.Character.Flatloots)) { 
+    decode object as Array(Aggregates.Character.Flatloots)
   }
 
   fun setKlasses (klasses : Array(String)) : Promise(Never, Void) {
