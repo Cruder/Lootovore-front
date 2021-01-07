@@ -19,7 +19,7 @@ namespace :deploy do
   task :build do
     on roles(:all) do
       within release_path do
-        execute *%w[/home/deployer/.asdf/installs/mint/0.10.0/bin/mint build -e .env.production]
+        execute *%w[/home/deployer/.asdf/installs/mint/0.11.0/bin/mint build -e .env.production]
       end
     end
   end
