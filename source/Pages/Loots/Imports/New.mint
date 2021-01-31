@@ -11,12 +11,14 @@ component Organisms.Loots.Imports.File {
   connect Theme exposing { primary, secondaryBackground }
 
   connect Forms.Loots.Import exposing {
+    setBody,
     setFile,
     setPassword,
     submit,
     getCurrentState,
     reset,
-    body
+    body,
+    toPassword
   }
 
   state isDraggingOver = false
@@ -80,6 +82,16 @@ component Organisms.Loots.Imports.File {
     setPassword(password)
   } where {
     password = Dom.getValue(event.target)
+  }
+
+  fun handleInputBody (event : Html.Event) : a {
+    setBody(body)
+  } where {
+    body = Dom.getValue(event.target)
+  }
+
+  fun onJsonValidate (event : Html.Event) {
+    toPassword()
   }
 
   fun dragEnter (event : Html.Event) : Promise(Never, Void) {
@@ -160,12 +172,12 @@ component Organisms.Loots.Imports.File {
 
         <div>
           <Molecules.Form.TextArea 
-            onInput={handleInputPassword} 
+            onInput={handleInputBody} 
             label="Paste your JSON here" 
             id="json-content"
             type="text"
           />
-          <Atoms.Button onClick={submit}>
+          <Atoms.Button onClick={onJsonValidate}>
             "Validate JSON"
           </Atoms.Button>
         </div>

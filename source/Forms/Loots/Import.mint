@@ -26,14 +26,16 @@ store Forms.Loots.Import {
     sequence {
       body = File.readAsString(file)
       setBody(body)
+      toPassword()
     }
   }
 
   fun setBody (text : String) {
-    sequence {
-      next { body = text }
-      next { currentState = Forms.Loots.Import.States::WaitingSubmit }
-    }
+    next { body = text }
+  }
+
+  fun toPassword () {
+    next { currentState = Forms.Loots.Import.States::WaitingSubmit }
   }
 
   fun setPassword (password : String) {
