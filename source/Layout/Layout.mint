@@ -18,6 +18,10 @@ component Layout {
     }
   }
 
+  style container {
+    padding-top: 8px;
+  }
+
   fun render : Html {
     <>
       if (header) {
@@ -25,7 +29,7 @@ component Layout {
       }
 
       <div::base(header)>
-        <div>
+        <div::container>
           <{ children }>
         </div>
 

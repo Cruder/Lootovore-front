@@ -26,6 +26,10 @@ component Pages.Loots.Index {
     Api.withDefault([], status)
   }
 
+  fun componentDidMount : Promise(Never, Void) {
+    Window.setTitle("Titan - Loots")
+  }
+
   fun render : Html {
     <div::base>
       <div::cards>

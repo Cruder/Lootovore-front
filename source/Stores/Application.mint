@@ -5,6 +5,7 @@ enum Page {
   Loots
   Equipment
   Home
+  Loots.Imports.New
   NotFound
 }
 

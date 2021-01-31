@@ -30,6 +30,11 @@ component Main {
           <Pages.Equipments.Show/>
         </Layout>
 
+      Page::Loots.Imports.New =>
+        <Layout>
+          <Pages.Loots.Imports.New />
+        </Layout>
+
       Page::NotFound =>
         <p>
           "Not found"

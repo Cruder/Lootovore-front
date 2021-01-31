@@ -22,6 +22,10 @@ component Pages.Characters.Index {
     margin: 32px;
   }
 
+  fun componentDidMount : Promise(Never, Void) {
+      Window.setTitle("Titan - Characters")
+  }
+
   get data : Array(Aggregates.Character.Flatloots) {
     Api.withDefault([], status)
   }

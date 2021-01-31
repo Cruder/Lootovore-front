@@ -15,9 +15,16 @@ component Pages.Equipments.Show {
   }
 
   get renderData : Html {
-    Debug.log(data)
+    data
     |> Maybe.map(renderEquipment)
     |> Maybe.withDefault(<{}>)
+  }
+
+  fun componentDidUpdate : Promise(Never, Void) {
+    case (data) {
+      Maybe::Just equipment => Window.setTitle("Titan - #{equipment.name}")
+      => next {}
+    }
   }
 
   fun renderEquipment(equipment : Aggregates.Equipment) : Html {

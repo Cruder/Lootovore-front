@@ -33,6 +33,12 @@ routes {
     }
   }
 
+  /loots/imports {
+    parallel {
+      Application.load(Page::Loots.Imports.New)
+    }
+  }
+
   /equipments/:id (id : String) {
     parallel {
       Application.load(Page::Equipment)

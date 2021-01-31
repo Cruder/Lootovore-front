@@ -48,6 +48,10 @@ component Pages.Home {
     text-transform: uppercase;
   }
 
+  fun componentDidMount : Promise(Never, Void) {
+      Window.setTitle("Titan")
+  }
+
   fun render : Html {
     <div::base>
       <div::card onClick={Navigator.characters}>

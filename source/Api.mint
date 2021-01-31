@@ -1,10 +1,3 @@
-enum Api.Status(a) {
-  Error(Map(String, Array(String)))
-  Loading
-  Initial
-  Ok(a)
-}
-
 record ErrorResponse {
   errors : Map(String, Array(String))
 }

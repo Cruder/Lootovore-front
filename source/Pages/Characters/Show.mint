@@ -23,6 +23,14 @@ component Pages.Characters.Show {
     |> Maybe.withDefault(<{}>)
   }
 
+  fun componentDidUpdate : Promise(Never, Void) {
+    case (data) {
+      Maybe::Just character => Window.setTitle("Titan - #{character.name}")
+      => next {}
+    }
+  }
+
+
   fun renderCharacter(character : Aggregates.Character) : Html {
     <>
       <Molecules.FloatingCard>
